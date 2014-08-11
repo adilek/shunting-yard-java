@@ -23,7 +23,7 @@ public class Main {
         
         ShuntingYard sy = new ShuntingYard();
         
-        System.out.println(sy.evaluate("4+2+2*2"));
+        System.out.println(sy.evaluate("7222*2+2*(3+9)+2*(((2+1*3)-(2-1)*2)+3)"));
 
         
     }

@@ -8,7 +8,6 @@ package az.adil.science.math;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Stack;
 import org.junit.After;
 import org.junit.AfterClass;
 import static org.junit.Assert.*;
@@ -143,31 +142,60 @@ public class ShuntingYardTest {
         double delta = 0.01;
 
         String[] array1 = {"3", "3", "*"};
-        assertEquals(9.0, instance.evaluatePostfix(Arrays.asList(array1)),delta);
+        assertEquals(9.0, instance.evaluatePostfix(Arrays.asList(array1)), delta);
 
         String[] array2 = {"2", "3", "8", "4", "-", "*", "+"};
-        assertEquals(14.0, instance.evaluatePostfix(Arrays.asList(array2)),delta);
+        assertEquals(14.0, instance.evaluatePostfix(Arrays.asList(array2)), delta);
 
         String[] array3 = {"3", "3", "*", "3", "*", "3", "*", "3", "*", "3", "*"};
-        assertEquals(729.0, instance.evaluatePostfix(Arrays.asList(array3)),delta);
+        assertEquals(729.0, instance.evaluatePostfix(Arrays.asList(array3)), delta);
 
         String[] array4 = {"1", "2", "+", "3", "/", "4", "^"};
-        assertEquals(1.0, instance.evaluatePostfix(Arrays.asList(array4)),delta);
+        assertEquals(1.0, instance.evaluatePostfix(Arrays.asList(array4)), delta);
 
         String[] array5 = {"1", "2", "+", "3", "4", "/", "5", "6", "+", "^", "*"};
-        assertEquals(0.126705408, instance.evaluatePostfix(Arrays.asList(array5)),delta);
+        assertEquals(0.126705408, instance.evaluatePostfix(Arrays.asList(array5)), delta);
 
         String[] array6 = {"3", "4", "5", "*", "6", "/", "+"};
-        assertEquals(6.333333333, instance.evaluatePostfix(Arrays.asList(array6)),delta);
+        assertEquals(6.333333333, instance.evaluatePostfix(Arrays.asList(array6)), delta);
 
         String[] array7 = {"300", "23", "+", "43", "21", "-", "*", "84", "7", "+", "/"};
-        assertEquals(78.087912088, instance.evaluatePostfix(Arrays.asList(array7)),delta);
+        assertEquals(78.087912088, instance.evaluatePostfix(Arrays.asList(array7)), delta);
 
         String[] array8 = {"4", "8", "+", "6", "5", "-", "*", "3", "2", "-", "2", "2", "+", "*", "/"};
-        assertEquals(3.0, instance.evaluatePostfix(Arrays.asList(array8)),delta);
+        assertEquals(3.0, instance.evaluatePostfix(Arrays.asList(array8)), delta);
 
     }
 
-    
+    /**
+     * Test of evaluate method, of class ShuntingYard.
+     */
+    @Test
+    public void testEvaluate() {
+        System.out.println("evaluate");
+        ShuntingYard instance = new ShuntingYard();
+        double delta = 0.01;
+
+        assertEquals(9.0, instance.evaluate("3*3"), delta);
+        assertEquals(14480, instance.evaluate("7222*2+2*(3+9)+2*(((2+1*3)-(2-1)*2)+3)"), delta);
+    }
+
+    /**
+     * Test of calculate method, of class ShuntingYard.
+     */
+    @Test
+    public void testCalculate() {
+        System.out.println("calculate");
+
+        ShuntingYard instance = new ShuntingYard();
+        double delta = 0.01;
+
+        assertEquals(5, instance.calculate(2, 3, '+'), delta);
+        assertEquals(1, instance.calculate(3, 2, '-'), delta);
+        assertEquals(6, instance.calculate(3, 2, '*'), delta);
+        assertEquals(3, instance.calculate(9, 3, '/'), delta);
+        assertEquals(8, instance.calculate(2, 3, '^'), delta);
+
+    }
 
 }
