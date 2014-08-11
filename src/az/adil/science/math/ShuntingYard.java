@@ -10,10 +10,22 @@ import java.util.Stack;
  */
 public class ShuntingYard {
 
+    /**
+     * Evaluates infix expression
+     *
+     * @param expression
+     * @return
+     */
     public double evaluate(String expression) {
         return evaluatePostfix(infixToPostfix(expression));
     }
 
+    /**
+     * Evaluates the postfix expression
+     *
+     * @param postfix
+     * @return
+     */
     public double evaluatePostfix(List<String> postfix) {
 
         Stack<Double> operands = new Stack<>();
@@ -139,6 +151,11 @@ public class ShuntingYard {
         return p;
     }
 
+    /**
+     * Checks the number for being correct integer
+     * @param number
+     * @return 
+     */
     protected boolean isInteger(String number) {
         for (int i = 0; i < number.length(); i++) {
             if (!(number.charAt(i) >= '0' && number.charAt(i) <= '9')) {
