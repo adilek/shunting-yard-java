@@ -1,13 +1,5 @@
 
 import az.adil.science.math.ShuntingYard;
-import java.util.Arrays;
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 
 /**
  *
@@ -23,7 +15,7 @@ public class Main {
         
         ShuntingYard sy = new ShuntingYard();
         
-        System.out.println(sy.evaluate("7222*2+2*(3+9)+2*(((2+1*3)-(2-1)*2)+3)"));
+        System.out.println(sy.evaluate("78+3+3+6*(3+4*(3+4))"));
 
         
     }
